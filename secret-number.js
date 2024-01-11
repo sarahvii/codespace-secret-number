@@ -8,12 +8,9 @@ const generateSecretNumber = () => Math.floor(Math.random() * 100) + 1;
 
 // function to start game
 function startGame() {
-    // generate secret number
     secretNumber = generateSecretNumber();
-    // reset attempts;
     attempts = 0;
 
-    // clear input and feedback and set display to show feedback
     document.getElementById('feedback').innerText = '';
     document.getElementById('guessInput').value = '';
     document.getElementById('gameContainer').style.display = 'block';
@@ -30,8 +27,8 @@ const checkGuess = (guess) => {
         document.getElementById('feedback').innerText = 'Your guess was too low. Try again';
     }
 
-    // increment number of attempts
     attempts ++;
+
     if (attempts >= guessLimit) {
         document.getElementById('feedback').innerText = `Game over :( You have no attempts left. The secret number was ${secretNumber}.`;
     } else {
@@ -41,7 +38,6 @@ const checkGuess = (guess) => {
 
 // add event listener to user guess form
 document.getElementById('guessForm').addEventListener('submit', function(event) {
-    // prevent page reloading
     event.preventDefault();
 
     // convert string input to number
